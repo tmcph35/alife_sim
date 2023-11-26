@@ -1,3 +1,5 @@
+package map;
+
 public abstract class Environment {
     private double[][] sunlightIntensityMap;
     private double[][] temperatureMap;
