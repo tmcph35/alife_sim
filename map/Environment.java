@@ -15,7 +15,6 @@ public abstract class Environment {
      *
      * @param width          The width of the environment.
      * @param height         The height of the environment.
-     * @param terrainType    The type of terrain in the environment.
      * @param initialTime    The initial time of day in hours (0 to 24).
      * @param initialHumidity The initial humidity level.
      * @param initialPrecipitation The initial precipitation level.
@@ -33,7 +32,10 @@ public abstract class Environment {
         this.height = height;
         this.sunlightIntensityMap = new double[width][height];
         this.temperatureMap = new double[width][height];
-        this.time = Math.max(0, Math.min(24, initialTime));
+        
+        if (isValidTime(initialTime)) {
+        this.time = initialTime;}
+        
         this.humidity = initialHumidity;
         this.precipitation = initialPrecipitation;
         this.windSpeed = initialWindSpeed;
@@ -93,7 +95,7 @@ public abstract class Environment {
      *
      * @return The initial time of day.
      */
-    public double getInitialTimeOfDay() {
+    public double getTime() {
         return time;
     }
 
